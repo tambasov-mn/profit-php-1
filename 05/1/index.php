@@ -68,7 +68,7 @@ if ( true == $_SESSION['check_status'] ) {
         <h2 style="text-align: center;">загрузить файл с котиком в галлерею</h2>
 
         <div style="text-align: center;">
-            <form action="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>upload.php" method="post" enctype="multipart/form-data">
+            <form action="/profit-php-1/DZ/05/1/upload.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="file_image">
                 <br><br>
                 <button type="submit">Загрузить</button>
@@ -78,7 +78,7 @@ if ( true == $_SESSION['check_status'] ) {
         <h2 style="text-align: center;">залогиньтесь, чтобы загружать картинки</h2>
 
         <div style="text-align: center;">
-            <a href="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>login.php">>> <b>ВОЙТИ</b> <<</a>
+            <a href="/profit-php-1/DZ/05/1/login.php">>> <b>ВОЙТИ</b> <<</a>
             <br><br>
         </div>
     <?php }; ?>
@@ -93,8 +93,8 @@ if ( true == $_SESSION['check_status'] ) {
 
             <?php foreach ($db_images as $key => $image) { ?>
 
-                <a href="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>image.php?id=<?php echo $key; ?>">
-                    <img src="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>images/<?php echo $image; ?>" alt="<?php echo $image; ?>" width="240">
+                <a href="/profit-php-1/DZ/05/1/image.php?id=<?php echo $key; ?>">
+                    <img src="/profit-php-1/DZ/05/1/images/<?php echo $image; ?>" alt="<?php echo $image; ?>" width="240">
                 </a>
 
                 <?php if(++$x1 % 2 == 0) { echo '<br>';   } else { echo ''; } ?>

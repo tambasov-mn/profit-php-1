@@ -51,9 +51,9 @@ $image_name = $db_images[$_GET['id']];
 
     <div class="images-gallery-large" style="text-align: center;">
         <div style="text-align: center;">
-            <img src="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>img/<?php echo $image_name; ?>" alt="<?php echo $image_name; ?>" width="960" >
+            <img src="/profit-php-1/DZ/05/1/images/<?php echo $image_name; ?>" alt="<?php echo $image_name; ?>" width="960" >
             <br><br>
-            <a href="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>index.php">>> <b>НАЗАД</b> <<</a>
+            <a href="/profit-php-1/DZ/05/1/index.php">>> <b>НАЗАД</b> <<</a>
         </div>
     </div>
 

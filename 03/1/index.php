@@ -12,8 +12,6 @@
  * 3.*Попробуйте улучшить программу. Пусть данные отправляются на ту же страницу на PHP, введенные числа останутся
  *    в input-ах, а результат появится после кнопки "равно"
  *
- * Date: 04.02.2019
- * Time: 19:27
  */
 
 // Добавим файл с функцикией калькулятора .............................................................................
@@ -59,8 +57,6 @@ if (isset($_GET['arithmetic_signs']) && in_array($_GET['arithmetic_signs'], $ari
 $result = calculate ($number_1, $number_2, $arithmetic_sign);
 //var_dump($result);
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +70,7 @@ $result = calculate ($number_1, $number_2, $arithmetic_sign);
 
     <h1>Программа-калькулятор:</h1>
 
-    <form action="index.php" method="get">
+    <form action="/profit-php-1/DZ/03/1/index.php" method="get">
         <input type="number" name="number_1" placeholder="Введите первое число" value="<?php echo $number_1; ?>">
 
         <select name="arithmetic_signs">

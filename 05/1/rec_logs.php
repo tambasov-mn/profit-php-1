@@ -12,5 +12,4 @@ $posts[] = $_POST['new_post'];
 file_put_contents(__DIR__ . '/db_guest_posting.txt', implode("\n", $posts) );
 
 // Вернемся на главную страницу, через заголовок 'Location: ':
-header('Location: ' . dirname($_SERVER['SCRIPT_NAME']) . '/index.php');
-?>
+header('Location: /profit-php-1/DZ/05/1/index.php');

@@ -50,7 +50,7 @@ $db_images = include __DIR__ . '/db/db-images.php';
     <h2 style="text-align: center;">загрузить файл с котиком в галлерею</h2>
 
     <div style="text-align: center;">
-        <form action="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>upload.php" method="post" enctype="multipart/form-data">
+        <form action="/profit-php-1/DZ/06/2/upload.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file_image">
             <br><br>
             <button type="submit">Загрузить</button>
@@ -66,8 +66,8 @@ $db_images = include __DIR__ . '/db/db-images.php';
 
             <?php foreach ($db_images as $key => $image) { ?>
 
-                <a href="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>image.php?id=<?php echo $key; ?>">
-                    <img src="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>images/<?php echo $image; ?>" alt="<?php echo $image; ?>" width="240">
+                <a href="/profit-php-1/DZ/06/2/image.php?id=<?php echo $key; ?>">
+                    <img src="/profit-php-1/DZ/06/2/images/<?php echo $image; ?>" alt="<?php echo $image; ?>" width="240">
                 </a>
 
                 <?php if(++$x1 % 2 == 0) { echo '<br>';   } else { echo ''; } ?>

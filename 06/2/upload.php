@@ -17,6 +17,6 @@ if (true === $result) {
 
 <div class="images-gallery-large" style="text-align: center;">
     <div style="text-align: center;">
-        <a href="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>index.php">>> <b>НАЗАД</b> <<</a>
+        <a href="/profit-php-1/DZ/06/2/index.php">>> <b>НАЗАД</b> <<</a>
     </div>
 </div>

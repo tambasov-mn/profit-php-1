@@ -33,7 +33,7 @@ if  ( null != getCurrentUser() &&  true != сheckPassword($login, $password) ) {
     $msg_status               = null;
     $block_error_view         = 'none';
 
-    header('Location: ' . dirname($_SERVER['SCRIPT_NAME']) . '/index.php');
+    header('Location: /profit-php-1/DZ/05/1/index.php');
 
 // 2. ЕСЛИ пользователь не вошел - отображает форму входа.
 } elseif  ( true != сheckPassword($login, $password) && null == getCurrentUser()) {
@@ -43,7 +43,7 @@ if  ( null != getCurrentUser() &&  true != сheckPassword($login, $password) ) {
     $msg_status               = 'Введите логин и пароль.';
     $block_error_view         = 'none';
 
-    // header('Location: ' . dirname($_SERVER['SCRIPT_NAME']) . '/login.php');
+    header('Location: /profit-php-1/DZ/05/1/login.php');
 
 // ИНАЧЕ - отображает форму входа.
 } else {
@@ -74,7 +74,7 @@ if  ( null != getCurrentUser() &&  true != сheckPassword($login, $password) ) {
     <h2 style="text-align: center;">Залогиньтесь:</h2>
 
     <div style="text-align: center; border: 1px;">
-        <form action="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>login.php" method="post">
+        <form action="/profit-php-1/DZ/05/1/login.php" method="post">
             <input type="text" name="login" placeholder="Введите свой логин" value="<?php echo $login ; ?>">
             <input type="password" name="password" placeholder="Введите свой пароль" value="">
 

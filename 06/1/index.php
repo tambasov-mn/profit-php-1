@@ -31,7 +31,7 @@ $guestBook = new GuestBook(__DIR__ . '/db_guest_posting.txt');
 
     <h2>Оставьте свой комментарий:</h2>
 
-    <form action="<?php echo dirname($_SERVER['SCRIPT_NAME']).'/'; ?>add_new_post.php" method="post">
+    <form action="/profit-php-1/DZ/06/1/add_new_post.php" method="post">
         <textarea name="new_post" cols="50" rows="4" placeholder="Ваш комментарий"></textarea>
         <br>
         <button type="submit">Добавить запись</button>
