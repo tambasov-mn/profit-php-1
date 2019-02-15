@@ -74,7 +74,7 @@ $result = calculate ($number_1, $number_2, $arithmetic_sign);
 
     <h1>Программа-калькулятор:</h1>
 
-    <form action="index.php" method="get">
+    <form action="/profit-php-1/DZ/03/2/index.php" method="get">
         <input type="number" name="number_1" placeholder="Введите первое число" value="<?php echo $number_1; ?>">
 
         <select name="arithmetic_signs">
