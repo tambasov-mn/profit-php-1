@@ -1,5 +1,8 @@
 <?php
-$status_upload = null;
+session_start();
+
+// Подключим функции:
+require_once __DIR__ . '/functions.php';
 
 if (isset($_FILES['file_image'])) {
 
@@ -9,34 +12,33 @@ if (isset($_FILES['file_image'])) {
 
 
     if (0 == $_FILES['file_image']['error']) {
-        // 4.*Решите задачу ограничения загрузки, например - только файлов JPEG и PNG. ................................
+        // 4.*Решите задачу ограничения загрузки, например - только файлов JPEG и PNG.
         if ('image/jpeg' == $_FILES['file_image']['type'] || 'image/png' == $_FILES['file_image']['type']) {
 
             if ($_FILES['file_image']['size'] > $file_size_limit) {
-                $status_upload = 'Картинка не должна весить не более 10 Mb.';
+                $_SESSION['upload_status'] = 'Картинка не должна весить не более 10 Mb.';
+                header('Location: /profit-php-1/DZ/05/1/index.php');
             } else {
                 // 3. Решите задачу загрузки файла от пользователя в заданное место на сервере с тем же именем файла,
                 //    что он имел на компьютере пользователя.
                 move_uploaded_file($_FILES['file_image']['tmp_name'], $dir_upload);
-                $status_upload = 'Файл ' . $_FILES['file_image']['name'] . ' загружается и скоро появится в галереи.';
+
+                $_SESSION['upload_status']    = 'Файл ' . $_FILES['file_image']['name'] . ' успешно загружен и добавлен в галерею.';
+                addRecordToLogsUploads( getCurrentUser(), $_FILES['file_image']['name'] );
+
+                header('Location: /profit-php-1/DZ/05/1/index.php');
             }
         } else {
-            $status_upload = 'Не правильный тип файла. Можно загружать только JPEG или PNG.';
+            $_SESSION['upload_status'] = 'Не правильный тип файла. Можно загружать только JPEG или PNG.';
+            header('Location: /profit-php-1/DZ/05/1/index.php');
         }
     } else {
-        $status_upload = 'Ошибка.';
+        $_SESSION['upload_status'] = 'Выберите файл для загрузки.';
+        header('Location: /profit-php-1/DZ/05/1/index.php');
     }
 } else {
-    $status_upload = 'Вы не выбрали картинку.';
+    $_SESSION['upload_status'] = 'Вы не выбрали картинку.';
+    header('Location: /profit-php-1/DZ/05/1/index.php');
 }
-?>
-<br><br>
 
-<h2 style="text-align: center;">Статус загрузки: <?php echo $status_upload; ?></h2>
-
-<div class="images-gallery-large" style="text-align: center;">
-    <div style="text-align: center;">
-        <a href="/profit-php-1/DZ/05/1/">>> <b>НАЗАД</b> <<</a>
-    </div>
-</div>
 

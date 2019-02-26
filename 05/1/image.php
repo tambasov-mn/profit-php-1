@@ -2,18 +2,20 @@
 // 1. Включим файл БД-Массив картинок : ...............................................................................
 // '/img/*.jpg'
 // $db_images = require  __DIR__ . '/2-db-images.php';
-$db_images = require_once __DIR__ . '/gallery/db-images.php';
+$db_images = require_once __DIR__ . '/db/db-images.php';
 
 // 2. Получим значение id картинки через GET : ........................................................................
 $image_name = $db_images[$_GET['id']];
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <title>Примитивная фотогалерея</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <style>
         .images-gallery-large a {
@@ -37,6 +39,8 @@ $image_name = $db_images[$_GET['id']];
             width: 960px; /**/
         }
     </style>
+
+    <title>Примитивная фотогалерея</title>
 </head>
 
 <body>
@@ -51,7 +55,7 @@ $image_name = $db_images[$_GET['id']];
 
     <div class="images-gallery-large" style="text-align: center;">
         <div style="text-align: center;">
-            <img src="/profit-php-1/DZ/05/1/images/<?php echo $image_name; ?>" alt="<?php echo $image_name; ?>" width="960" >
+            <img src="/profit-php-1/DZ/05/1/images/<?php echo $image_name; ?>" alt="<?php echo $image_name; ?>" width="960">
             <br><br>
             <a href="/profit-php-1/DZ/05/1/index.php">>> <b>НАЗАД</b> <<</a>
         </div>

@@ -1,38 +1,30 @@
 <?php
 /**
- * ДОМАШНЯЯ РАБОТА №4.:
+ * ДОМАШНЯЯ РАБОТА №5.:
  */
-// 1. Включим файл БД-Массив картинок : ...............................................................................
-// '/img/*.jpg' - папка с картинками:
-$db_images = include __DIR__ . '/db/db-images.php';
-
-// 2. Получим значение id картинки через GET : ........................................................................
-$image_name = $db_images[$_GET['id']];
-
-// ....................................................................................................................
 session_start();
 
-/*
-   $_SESSION['username_logs'] = $_SESSION['username'] . ',' . date(DATE_RFC2822);
-*/
-if ( true == $_SESSION['check_status'] ) {
-    echo $_SESSION['username'];
-    echo '<br>';
-    echo $_SESSION['username_logs'];
-} else  {
-    echo $_SESSION['username'] = null;
-    echo '<br>';
-    echo $_SESSION['username_logs'] = null;
-}
+require_once __DIR__ . '/functions.php';
+$db_images = include __DIR__ . '/db/db-images.php';
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <title>Примитивная фотогалерея</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <style>
+        h2 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+        }
         .images-gallery a {
             text-decoration: none;
         }
@@ -40,16 +32,20 @@ if ( true == $_SESSION['check_status'] ) {
             margin: 5px 5px 5px 5px;
             border: 1px solid mediumblue;
             box-shadow: 0px 0px 5px 1px #000000;
-            width: 480px; /* 960 / 480 */ /* box-shadow: 3px 3px 30px 3px #000000; */
+            width:  480px; /* 960 / 480 */ /* box-shadow: 3px 3px 30px 3px #000000; */
+            height: 240px;
             z-index: 5;
         }
         .images-gallery img:hover {
             border: 2px solid cyan;
             box-shadow: 0px 0px 30px 5px #000000; /* x y  */
-            width: 490px; /* 560px */
+            width:  490px; /* 560px */
+            height: 240px;
             z-index: 10;
         }
     </style>
+
+    <title>Примитивная фотогалерея</title>
 </head>
 
 <body>
@@ -64,8 +60,10 @@ if ( true == $_SESSION['check_status'] ) {
     <!-- 2.2. Загрузка файлов от пользователя -->
     <hr>
 
-    <?php if ($_SESSION['username'] != '') {; ?>
-        <h2 style="text-align: center;">загрузить файл с котиком в галлерею</h2>
+    <?php if ( null != getCurrentUser() ) {; ?>
+
+        <h2><?php echo getCurrentUser(); ?></h2>
+        <h3>вы можете загрузить файл с котиком в галерею</h3>
 
         <div style="text-align: center;">
             <form action="/profit-php-1/DZ/05/1/upload.php" method="post" enctype="multipart/form-data">
@@ -73,6 +71,10 @@ if ( true == $_SESSION['check_status'] ) {
                 <br><br>
                 <button type="submit">Загрузить</button>
             </form>
+
+            <p>
+                <?php if( isset($_SESSION['upload_status']) ) { echo $_SESSION['upload_status']; } else { echo ''; } ?>
+            </p>
         </div>
     <?php } else {; ?>
         <h2 style="text-align: center;">залогиньтесь, чтобы загружать картинки</h2>
@@ -90,14 +92,13 @@ if ( true == $_SESSION['check_status'] ) {
     <br><br>
     <div style="text-align: center;">
         <div class="images-gallery">
-
+            <?php $i = 0; ?>
             <?php foreach ($db_images as $key => $image) { ?>
 
                 <a href="/profit-php-1/DZ/05/1/image.php?id=<?php echo $key; ?>">
-                    <img src="/profit-php-1/DZ/05/1/images/<?php echo $image; ?>" alt="<?php echo $image; ?>" width="240">
+                    <img src="/profit-php-1/DZ/05/1/images/<?php echo $image; ?>" alt="<?php echo $image; ?>">
                 </a>
-
-                <?php if(++$x1 % 2 == 0) { echo '<br>';   } else { echo ''; } ?>
+                <?php if(++$i % 2 == 0) { echo '<br>';   } else { echo ''; } ?>
 
             <?php } ?>
         </div>
